@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  testappdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=password@12345#
+  backendtestwebapi:
+    container_name: backend-test-web-api
+    image: ${DOCKER_REGISTRY-}backendtestwebapi
+    build:
+      context: .
+      dockerfile: BackendTestWebAPI/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - testappdb
+    environment:
+      - DB_HOST=testappdb
+      - DB_NAME=TestWebApiApp
+      - DB_SA_PASSWORD=password@12345#

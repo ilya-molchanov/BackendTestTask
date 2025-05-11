@@ -79,9 +79,20 @@ packages/
 # NCrunch
 *.ncrunchproject
 *.ncrunchsolution
-# Resharper unit tests #
-########################
-[Tt]estResults/*
 
 NDependOut1/
 QueryResult.xls
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio 2015 cache/options directory
+.vs/
+wwwroot/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
